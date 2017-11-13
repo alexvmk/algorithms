@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "AlgorithmsConsole": {
+      "commandName": "Project",
+      "commandLineArgs": "1"
+    }
+  }
+}

@@ -7,7 +7,17 @@ namespace Algorithms
     {
         public MaxNearestNumberInArray()
         {
+
         }
+
+        int maxNumber = Int32.MinValue;
+        int maxNumberIndex = -1;
+        int secondMaxNumber = Int32.MinValue;
+        int secondmaxNumberIndex = -1;
+        int thirdMaxNumber = Int32.MinValue;
+        int thirdmaxNumberIndex = -1;
+        int fourthMaxNumber = Int32.MinValue;
+        int fourthmaxNumberIndex = -1;
 
         public int CalcSecondMaxNumber(List<int> inputList)
         {
@@ -16,30 +26,24 @@ namespace Algorithms
                 throw new Exception("Minimum length of teh input array must be greater than 5");
             }
 
-            int maxNumber = Int32.MinValue;
-            int maxNumberIndex = -1;
-            int secondMaxNumber = Int32.MinValue;
-            int secondmaxNumberIndex = -1;
-            int thirdMaxNumber = Int32.MinValue;
-            int thirdmaxNumberIndex = -1;
-            int fourthMaxNumber = Int32.MinValue;
-            int fourthmaxNumberIndex = -1;
-
             var result = 0;
             for (var i = 0; i < inputList.Count; i++)
             {
                 if (inputList[i] > maxNumber)
                 {
+                    RecalcValuesOfMazValues(1);
                     maxNumber = inputList[i];
                     maxNumberIndex = i;
                 }
                 else if (inputList[i] > secondMaxNumber)
                 {
+                    RecalcValuesOfMazValues(2);
                     secondMaxNumber = inputList[i];
                     secondmaxNumberIndex = i;
                 }
                 else if (inputList[i] > thirdMaxNumber)
                 {
+                    RecalcValuesOfMazValues(3);
                     thirdMaxNumber = inputList[i];
                     thirdmaxNumberIndex = i;
                 }
@@ -57,6 +61,27 @@ namespace Algorithms
             else if (Math.Abs(maxNumberIndex - fourthmaxNumberIndex) > 1)
                 result = fourthMaxNumber;
             return result;
+        }
+
+        private void RecalcValuesOfMazValues(int level)
+        {
+            if (level >= 1 && level <= 3)
+            {
+                fourthMaxNumber = thirdMaxNumber;
+                fourthmaxNumberIndex = thirdmaxNumberIndex;
+            }
+
+            if (level >= 1 && level <= 2)
+            {
+                thirdMaxNumber = secondMaxNumber;
+                thirdmaxNumberIndex = secondmaxNumberIndex;
+            }
+
+            if (level == 1)
+            {
+                secondMaxNumber = maxNumber;
+                secondmaxNumberIndex = maxNumberIndex;
+            }
         }
     }
 }
