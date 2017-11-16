@@ -20,7 +20,15 @@ namespace Algorithms.Algorithms2017
             if (Math.Min(m, n) % 2 != 0)
                 throw new Exception("Math.Min(m, n) % 2 != 0");
 
-            var result = new int[inputArray.Length][];
+            var result = new int[m][];
+            for (int x = 0; x < m; x++)
+            {
+                result[x] = new int[n];
+                for (int y = 0; y < n; y++)
+                {
+                    result[x][y] = -1;
+                }
+            }
 
             var requiredNumberOfDisplacements = GetRequiredNumberOfDisplacements(m, n, r);
             if (requiredNumberOfDisplacements == 0)
@@ -30,13 +38,13 @@ namespace Algorithms.Algorithms2017
             var countOfFrames = Math.Min(m, n) / 2;
 
             // create all frames frameList from mattrix:
-            for (int i = 1; i <= countOfFrames; i++)
+            for (int i = 0; i < countOfFrames; i++)
             {
                 //We go diagonally and if we have not yet exhausted the frames, than we create the frame:
                 if (i < m && i < n)
                 {
-                    var frWidth = n - i + 1;
-                    var frLength = m - i + 1;
+                    var frWidth = n - (i*2);
+                    var frLength = m - (i * 2);
                     var frame = new Frame() {M = frLength, N = frWidth, FrameNum = i,
                         RequiredNumberOfDisplacements = GetRequiredNumberOfDisplacements(frLength, frWidth, r) };
                     frameList.Add(frame); 
@@ -46,41 +54,40 @@ namespace Algorithms.Algorithms2017
             foreach (var frame in frameList)
             {
                 var points = new List<Point>();
+                var addNumber = frame.FrameNum == 1 ? 0 : 1;
                 // go along the left vertical side of the frame:
-                for (var y = frame.FrameNum; y <= frame.M + 1; y++)
+                for (var y = frame.FrameNum - 1; y < frame.M + addNumber; y++)
                 {
-                    var point = new Point() {X = frame.FrameNum, Y = y, Value = inputArray[frame.FrameNum][y] };
-                    //if (y == frame.FrameNum)
-                    //{
-                    //    points.Add(point);
-                    //}
-                    //else
+                    var x = frame.FrameNum - 1;
+                    var point = new Point() {X = x, Y = y, Value = inputArray[x][y] };
                     points.Add(point);
                 }
 
                 // go along the bottom horizontal side of the frame:
-                for (var x = frame.FrameNum + 1; x <= frame.N + 1; x++)
+                for (var x = frame.FrameNum; x < frame.N + addNumber; x++)
                 {
-                    var y = frame.FrameNum + frame.M - 1;
+                    var y = frame.FrameNum + frame.M - 2;
                     var point = new Point() { X = x, Y = y, Value = inputArray[x][y] };
                     points.Add(point);
                 }
 
                 // go along the right vertical side of the frame:
-                for (var y = frame.FrameNum + frame.M - 1; y >= frame.M; y--)
+                for (var y = frame.FrameNum + frame.M - 3; y >= frame.FrameNum - 1; y--)
                 {
-                    var x = frame.FrameNum + frame.N - 1;
+                    var x = frame.FrameNum + frame.N - 2;
                     var point = new Point() { X = x, Y = y, Value = inputArray[x][y] };
                     points.Add(point);
                 }
 
                 // go along the upper horizontal side of the frame:
-                for (var x = frame.FrameNum + frame.N - 1; x >= frame.N; x--)
+                for (var x = frame.FrameNum + frame.N - 3; x >= frame.FrameNum; x--)
                 {
-                    var y = frame.FrameNum;
+                    var y = frame.FrameNum - 1;
                     var point = new Point() { X = x, Y = y, Value = inputArray[x][y] };
                     points.Add(point);
                 }
+
+                frame.Points = points;
             }
 
             // move the elements in the frames to requiredNumberOfDisplacements places:
