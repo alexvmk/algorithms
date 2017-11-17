@@ -50,9 +50,9 @@ namespace AlgorithmsConsole
         {
             Console.WriteLine("You chose MatrixLayerRotation algoritm");
             var algoritm = new MatrixLayerRotation();
-            const int m = 8;
-            const int n = 8;
-            const int r = 2;
+            const int m = 12;
+            const int n = 12;
+            const int r = 25;
             var inputArray = new int[n, m];
             var num = 0;
             var random = new Random();

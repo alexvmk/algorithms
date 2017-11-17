@@ -56,7 +56,7 @@ namespace Algorithms.Algorithms2017
                 var points = new List<Point>();
                 var addNumber = frame.FrameNum == 1 ? 0 : 1;
                 // go along the left vertical side of the frame:
-                for (var y = frame.FrameNum - 1; y < frame.M + addNumber; y++)
+                for (var y = frame.FrameNum - 1; y < frame.FrameNum - 1 + frame.M; y++)
                 {
                     var x = frame.FrameNum - 1;
                     var point = new Point() {X = x, Y = y, Value = inputArray[x,y] };
@@ -64,7 +64,7 @@ namespace Algorithms.Algorithms2017
                 }
 
                 // go along the bottom horizontal side of the frame:
-                for (var x = frame.FrameNum; x < frame.N + addNumber; x++)
+                for (var x = frame.FrameNum; x < frame.FrameNum - 1 + frame.N; x++)
                 {
                     var y = frame.FrameNum + frame.M - 2;
                     var point = new Point() { X = x, Y = y, Value = inputArray[x,y] };
