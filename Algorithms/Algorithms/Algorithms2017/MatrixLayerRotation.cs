@@ -11,22 +11,21 @@ namespace Algorithms.Algorithms2017
         public MatrixLayerRotation()
         {}
 
-        public int[][] CalcSecondMaxNumber(int m, int n, int r, int[][] inputArray)
+        public int[,] CalcSecondMaxNumber(int m, int n, int r, int[,] inputArray)
         {
-            if (inputArray == null || inputArray.Length < 2 || inputArray.Length > 300 || inputArray[0].Length < 2 || inputArray[0].Length > 300
+            if (inputArray == null || inputArray.Length < 2 || inputArray.Length > 300 || n < 2 || n > 300
                 || r < 1 || r > 1000000000)
                 throw new Exception("Length of input parameters is not correct.");
 
             if (Math.Min(m, n) % 2 != 0)
                 throw new Exception("Math.Min(m, n) % 2 != 0");
 
-            var result = new int[m][];
-            for (int x = 0; x < m; x++)
+            var result = new int[n, m];
+            for (int y = 0; y < m; y++)
             {
-                result[x] = new int[n];
-                for (int y = 0; y < n; y++)
+                for (int x = 0; x < n; x++)
                 {
-                    result[x][y] = -1;
+                    result[x,y] = -1;
                 }
             }
 
@@ -37,6 +36,7 @@ namespace Algorithms.Algorithms2017
             var frameList = new List<Frame>();
             var countOfFrames = Math.Min(m, n) / 2;
 
+
             // create all frames frameList from mattrix:
             for (int i = 0; i < countOfFrames; i++)
             {
@@ -45,7 +45,7 @@ namespace Algorithms.Algorithms2017
                 {
                     var frWidth = n - (i*2);
                     var frLength = m - (i * 2);
-                    var frame = new Frame() {M = frLength, N = frWidth, FrameNum = i,
+                    var frame = new Frame() {M = frLength, N = frWidth, FrameNum = i + 1,
                         RequiredNumberOfDisplacements = GetRequiredNumberOfDisplacements(frLength, frWidth, r) };
                     frameList.Add(frame); 
                 }
@@ -59,7 +59,7 @@ namespace Algorithms.Algorithms2017
                 for (var y = frame.FrameNum - 1; y < frame.M + addNumber; y++)
                 {
                     var x = frame.FrameNum - 1;
-                    var point = new Point() {X = x, Y = y, Value = inputArray[x][y] };
+                    var point = new Point() {X = x, Y = y, Value = inputArray[x,y] };
                     points.Add(point);
                 }
 
@@ -67,7 +67,7 @@ namespace Algorithms.Algorithms2017
                 for (var x = frame.FrameNum; x < frame.N + addNumber; x++)
                 {
                     var y = frame.FrameNum + frame.M - 2;
-                    var point = new Point() { X = x, Y = y, Value = inputArray[x][y] };
+                    var point = new Point() { X = x, Y = y, Value = inputArray[x,y] };
                     points.Add(point);
                 }
 
@@ -75,7 +75,7 @@ namespace Algorithms.Algorithms2017
                 for (var y = frame.FrameNum + frame.M - 3; y >= frame.FrameNum - 1; y--)
                 {
                     var x = frame.FrameNum + frame.N - 2;
-                    var point = new Point() { X = x, Y = y, Value = inputArray[x][y] };
+                    var point = new Point() { X = x, Y = y, Value = inputArray[x,y] };
                     points.Add(point);
                 }
 
@@ -83,7 +83,7 @@ namespace Algorithms.Algorithms2017
                 for (var x = frame.FrameNum + frame.N - 3; x >= frame.FrameNum; x--)
                 {
                     var y = frame.FrameNum - 1;
-                    var point = new Point() { X = x, Y = y, Value = inputArray[x][y] };
+                    var point = new Point() { X = x, Y = y, Value = inputArray[x,y] };
                     points.Add(point);
                 }
 
@@ -124,7 +124,7 @@ namespace Algorithms.Algorithms2017
             {
                 foreach (var point in frame.Points)
                 {
-                    result[point.X][point.Y] = point.Value;
+                    result[point.X,point.Y] = point.Value;
                 }
             }
             return result;

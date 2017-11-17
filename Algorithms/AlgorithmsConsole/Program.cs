@@ -50,39 +50,39 @@ namespace AlgorithmsConsole
         {
             Console.WriteLine("You chose MatrixLayerRotation algoritm");
             var algoritm = new MatrixLayerRotation();
-            const int m = 4;
-            const int n= 4;
+            const int m = 8;
+            const int n = 8;
             const int r = 2;
-            var inputArray = new int[m][];
+            var inputArray = new int[n, m];
             var num = 0;
             var random = new Random();
-            for (int x = 0; x < m; x++)
+            
+            for (int y = 0; y < m; y++)
             {
-                inputArray[x] = new int[n];
-                for (int y = 0; y < n; y++)
+                for (int x = 0; x < n; x++)
                 {
-                    inputArray[x][y] = random.Next(0, 9);
+                    inputArray[x, y] = random.Next(0, 9);
                 }
             }
 
             Console.WriteLine($"Input matrix:");
-            for (int y = 0; y < inputArray.Length; y++)
+            for (int y = 0; y < m; y++)
             {
                 Console.WriteLine();
-                for (int x = 0; x < inputArray[y].Length; x++)
+                for (int x = 0; x < n; x++)
                 {
-                    Console.Write($"[{x},{y}] {inputArray[x][y]}     ");
+                    Console.Write($"[{x},{y}] {inputArray[x,y]}     ");
                 }
             }
             var result = algoritm.CalcSecondMaxNumber(m,n,r, inputArray);
             Console.WriteLine();
             Console.WriteLine($"The result of the algoritm execution is:");
-            for (int y = 0; y < result.Length; y++)
+            for (int y = 0; y < m; y++)
             {
                 Console.WriteLine();
-                for (int x = 0; x < result[y].Length; x++)
+                for (int x = 0; x < n; x++)
                 {
-                    Console.Write($"[{x},{y}] {result[x][y]}     ");
+                    Console.Write($"[{x},{y}] {result[x,y]}     ");
                 }
             }
             Console.WriteLine();
