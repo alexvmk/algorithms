@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27004.2008
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AlgorithmsConsole", "AlgorithmsConsole\AlgorithmsConsole.csproj", "{B705513A-38E6-41D7-B72F-0CE56A14DD6E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AlgorithmsConsole", "AlgorithmsConsole\AlgorithmsConsole.csproj", "{B705513A-38E6-41D7-B72F-0CE56A14DD6E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Algorithms", "Algorithms\Algorithms.csproj", "{0AFBB956-C45E-433F-BE9E-335BF36ACB47}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Algorithms", "Algorithms\Algorithms.csproj", "{0AFBB956-C45E-433F-BE9E-335BF36ACB47}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MatrixRotatorConsole", "MatrixRotatorConsole\MatrixRotatorConsole.csproj", "{40DBBB27-1881-479C-9E39-4855969A9F08}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{0AFBB956-C45E-433F-BE9E-335BF36ACB47}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0AFBB956-C45E-433F-BE9E-335BF36ACB47}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0AFBB956-C45E-433F-BE9E-335BF36ACB47}.Release|Any CPU.Build.0 = Release|Any CPU
+		{40DBBB27-1881-479C-9E39-4855969A9F08}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{40DBBB27-1881-479C-9E39-4855969A9F08}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{40DBBB27-1881-479C-9E39-4855969A9F08}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{40DBBB27-1881-479C-9E39-4855969A9F08}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

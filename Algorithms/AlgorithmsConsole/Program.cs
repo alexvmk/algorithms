@@ -22,6 +22,9 @@ namespace AlgorithmsConsole
                     case 2:
                         RunMatrixLayerRotation();
                         break;
+                    case 4:
+                        RunQuickSort();
+                        break;
                     default:
                         Console.WriteLine("There are no algoritms for this number");
                     break;
@@ -84,6 +87,26 @@ namespace AlgorithmsConsole
                 {
                     Console.Write($"[{x},{y}] {result[x,y]}     ");
                 }
+            }
+            Console.WriteLine();
+        }
+
+        private static void RunQuickSort()
+        {
+            Console.WriteLine("You chose RunQuickSort algoritm");
+            var algoritm = new Task4QuickSort();
+            var inputArray = new int[] { 1, 5, 5, 7, 8, 2, 6, 2, 5, 7, 9, 2, 3, 56, 1, 66, 22, 1 };
+            Console.WriteLine($"Input:");
+            for (int y = 0; y < inputArray.Length; y++)
+            {
+                Console.Write($"{inputArray[y]}  ");
+            }
+            var result = algoritm.SortTest(inputArray);
+            Console.WriteLine();
+            Console.WriteLine($"The result of the algoritm execution is:");
+            for (int y = 0; y < result.Length; y++)
+            {
+                Console.Write($"{result[y]}  ");
             }
             Console.WriteLine();
         }
