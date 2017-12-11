@@ -22,6 +22,10 @@ namespace AlgorithmsConsole
                     case 2:
                         RunMatrixLayerRotation();
                         break;
+                    case 3:
+                        var pigBank = new PigBank();
+                        pigBank.Do();
+                        break;
                     case 4:
                         RunQuickSort();
                         break;
