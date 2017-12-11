@@ -29,6 +29,10 @@ namespace AlgorithmsConsole
                     case 4:
                         RunQuickSort();
                         break;
+                    case 5:
+                        var sortedLinkedList = new SortedLinkedList();
+                        sortedLinkedList.Do();
+                        break;
                     default:
                         Console.WriteLine("There are no algoritms for this number");
                     break;
