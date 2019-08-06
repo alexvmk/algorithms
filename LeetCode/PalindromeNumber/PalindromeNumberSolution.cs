@@ -1,7 +1,7 @@
 using System;
 
 namespace PalindromeNumber
-{    public class Solution
+{    public class PalindromeNumberSolution
     {
         public bool IsPalindrome(int x)
         {

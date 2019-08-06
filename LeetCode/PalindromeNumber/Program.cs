@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace PalindromeNumber
+namespace Algorithms
 {
     class Program
     {
@@ -8,8 +8,17 @@ namespace PalindromeNumber
         {
             Console.WriteLine("Hello World!");
 
-            var sln = new Solution();
+            //----------------PalindromeNumber
+            var sln = new PalindromeNumber.PalindromeNumberSolution();
             Console.WriteLine(sln.IsPalindrome(12312));
+
+            //----------------4SumII
+            int[] A = new int[] { 1, 2 };
+            int[] B = new int[] { -2, 1 };
+            int[] C = new int[] { -1, 2 };
+            int[] D = new int[] { 0, 2 };
+            var sum4Sln = new _4SumIISolution();
+            Console.WriteLine(sum4Sln.FourSumCount(A, B, C, D));
         }
     }
 }
