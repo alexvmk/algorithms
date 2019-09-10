@@ -32,26 +32,39 @@ namespace Algorithms
 
             //-----------------------InterSectionOfTwoLinkedLists-----
             // [4,1,8,4,5]
-            var head1 = new ListNode(4);
-            head1.next = new ListNode(1);
-            head1.next.next = new ListNode(8);
-            head1.next.next.next = new ListNode(4);
-            head1.next.next.next.next = new ListNode(5);
+            //var head1 = new ListNode(4);
+            //head1.next = new ListNode(1);
+            //head1.next.next = new ListNode(8);
+            //head1.next.next.next = new ListNode(4);
+            //head1.next.next.next.next = new ListNode(5);
 
-            // [5,0,1,8,4,5]
-            var head2 = new ListNode(5);
-            head2.next = new ListNode(0);
-            head2.next.next = new ListNode(1);
-            head2.next.next.next = new ListNode(2);
-            head2.next.next.next.next = new ListNode(3);
-            head2.next.next.next.next.next = head1.next.next;
-            head2.next.next.next.next.next.next = new ListNode(4);
-            head2.next.next.next.next.next.next.next = new ListNode(5);
+            //// [5,0,1,8,4,5]
+            //var head2 = new ListNode(5);
+            //head2.next = new ListNode(0);
+            //head2.next.next = new ListNode(1);
+            //head2.next.next.next = new ListNode(2);
+            //head2.next.next.next.next = new ListNode(3);
+            //head2.next.next.next.next.next = head1.next.next;
+            //head2.next.next.next.next.next.next = new ListNode(4);
+            //head2.next.next.next.next.next.next.next = new ListNode(5);
 
-            var sln = new InterSectionOfTwoLinkedLists();
-            Console.WriteLine("InterSectionOfTwoLinkedLists result:");
-            var res = sln.GetIntersectionNode(head1, head2);
-            Console.WriteLine(((res != null) ? res.val.ToString() : "null"));
+            //var sln = new InterSectionOfTwoLinkedLists();
+            //Console.WriteLine("InterSectionOfTwoLinkedLists result:");
+            //var res = sln.GetIntersectionNode(head1, head2);
+            //Console.WriteLine(((res != null) ? res.val.ToString() : "null"));
+
+            // SymmetricTree=========================
+            var sln = new SymmetricTree();
+
+            var root = new SymmetricTree.TreeNode(1);
+            root.left = new SymmetricTree.TreeNode(2);
+            root.right = new SymmetricTree.TreeNode(2);
+            root.left.right = new SymmetricTree.TreeNode(3);
+            root.left.left = new SymmetricTree.TreeNode(4);
+            root.right.right = new SymmetricTree.TreeNode(4);
+            root.right.left = new SymmetricTree.TreeNode(3);
+
+            Console.WriteLine(sln.IsSymmetric(root));
         }
     }
 }
