@@ -93,9 +93,22 @@ namespace Algorithms
             //}
 
             // PermutationUnique============================
-            var perm = new PermutationUnique();
-            var str = "aaaaab";
-            var result = perm.Permute(str);
+            //var perm = new PermutationUnique();
+            //var str = "aaaaab";
+            //var result = perm.Permute(str);
+            //foreach (var list in result)
+            //{
+            //    foreach (var n in list)
+            //    {
+            //        Console.Write(n);
+            //    }
+            //    Console.WriteLine();
+            //}
+
+            // PermutationUniqueWithInt============================
+            var perm = new PermutationUniqueWithInt();
+            var nums = new int[] { 3,3,0,3};
+            var result = perm.Permute(nums);
             foreach (var list in result)
             {
                 foreach (var n in list)
