@@ -54,17 +54,56 @@ namespace Algorithms
             //Console.WriteLine(((res != null) ? res.val.ToString() : "null"));
 
             // SymmetricTree=========================
-            var sln = new SymmetricTree();
+            //var sln = new SymmetricTree();
 
-            var root = new SymmetricTree.TreeNode(1);
-            root.left = new SymmetricTree.TreeNode(2);
-            root.right = new SymmetricTree.TreeNode(2);
-            root.left.right = new SymmetricTree.TreeNode(3);
-            root.left.left = new SymmetricTree.TreeNode(4);
-            root.right.right = new SymmetricTree.TreeNode(4);
-            root.right.left = new SymmetricTree.TreeNode(3);
+            //var root = new SymmetricTree.TreeNode(1);
+            //root.left = new SymmetricTree.TreeNode(2);
+            //root.right = new SymmetricTree.TreeNode(2);
+            //root.left.right = new SymmetricTree.TreeNode(3);
+            //root.left.left = new SymmetricTree.TreeNode(4);
+            //root.right.right = new SymmetricTree.TreeNode(4);
+            //root.right.left = new SymmetricTree.TreeNode(3);
 
-            Console.WriteLine(sln.IsSymmetric(root));
+            //Console.WriteLine(sln.IsSymmetric(root));
+
+            // CalcSubsets============================
+            //var subsets = new Subsets();
+            //var nums = new int[] { 1, 2, 3};
+            //var result = subsets.CalcSubsets(nums);
+            //foreach (var list in result)
+            //{
+            //    foreach (var n in list)
+            //    {
+            //        Console.Write(n + " ");
+            //    }
+            //    Console.WriteLine();
+            //}
+
+            // Permutation============================
+            //var perm = new Permutation();
+            //var str = "ABC";
+            //var result = perm.Permute(str);
+            //foreach (var list in result)
+            //{
+            //    foreach (var n in list)
+            //    {
+            //        Console.Write(n);
+            //    }
+            //    Console.WriteLine();
+            //}
+
+            // PermutationUnique============================
+            var perm = new PermutationUnique();
+            var str = "aaaaab";
+            var result = perm.Permute(str);
+            foreach (var list in result)
+            {
+                foreach (var n in list)
+                {
+                    Console.Write(n);
+                }
+                Console.WriteLine();
+            }
         }
     }
 }
