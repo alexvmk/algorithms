@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Algorithms.DataStructure;
 
 namespace Algorithms
 {public class InterSectionOfTwoLinkedLists
@@ -21,13 +22,6 @@ namespace Algorithms
             }
 
             return a;
-        }
-
-        public class ListNode
-        {
-            public int val;
-            public ListNode next;
-            public ListNode(int x) { val = x; }
         }
     }
 }

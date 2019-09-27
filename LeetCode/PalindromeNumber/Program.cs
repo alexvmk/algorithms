@@ -1,5 +1,6 @@
 ﻿using System;
-using ListNode = Algorithms.InterSectionOfTwoLinkedLists.ListNode;
+using System.Collections.Generic;
+using Algorithms.DataStructure;
 
 namespace Algorithms
 {
@@ -106,17 +107,33 @@ namespace Algorithms
             //}
 
             // PermutationUniqueWithInt============================
-            var perm = new PermutationUniqueWithInt();
-            var nums = new int[] { 3,3,0,3};
-            var result = perm.Permute(nums);
-            foreach (var list in result)
-            {
-                foreach (var n in list)
-                {
-                    Console.Write(n);
-                }
-                Console.WriteLine();
-            }
+            //var perm = new PermutationUniqueWithInt();
+            //var nums = new int[] { 3,3,0,3};
+            //var result = perm.Permute(nums);
+            //foreach (var list in result)
+            //{
+            //    foreach (var n in list)
+            //    {
+            //        Console.Write(n);
+            //    }
+            //    Console.WriteLine();
+            //}
+
+            // MergeSortedLinkedLists==============================
+            //Example:
+            //list1 = 1->3->5->7
+            //list2 = 2->4->6->8
+            //list3 = 0->9->10->11
+            //Output:
+            //list4 = 0->1->2->3->4->5->6->7->8->9->10->11
+
+            var head1 = new ListNode(1) {next = new ListNode(3) {next = new ListNode(5) {next = new ListNode(7)}}};
+            var head2 = new ListNode(2) {next = new ListNode(4) {next = new ListNode(6) {next = new ListNode(8)}}};
+            var head3 = new ListNode(0) {next = new ListNode(9) {next = new ListNode(10) {next = new ListNode(11)}}};
+
+            var list = new List<ListNode>() {head1, head2, head3};
+            var r = MergeSortedLinkedLists.MergeKLists(list.ToArray(), list.Count - 1);
+            MergeSortedLinkedLists.PrintList(r);
         }
     }
 }
