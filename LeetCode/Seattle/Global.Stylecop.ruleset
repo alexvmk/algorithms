@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RuleSet Name="Global StyleCop ruleset" Description="Code analysis rules for Clarity 2.0 project." ToolsVersion="15.0">
+  <Rules AnalyzerId="StyleCop.Analyzers" RuleNamespace="StyleCop.Analyzers">
+    <Rule Id="SA0001" Action="None" /> <!-- All diagnostics of XML documentation comments has been disabled due to the current project configuration. -->
+    <Rule Id="SA1101" Action="None" /> <!-- A call to an instance member of the local class or a base class is not prefixed with 'this.', within a C# code file. -->
+    <Rule Id="SA1200" Action="None" /> <!-- A C# using directive is placed outside of a namespace element. -->
+    <Rule Id="SA1309" Action="None" /> <!-- A field name in C# begins with an underscore. -->
+    <Rule Id="SA1402" Action="None" /> <!-- File may only contain a single type. -->
+    <Rule Id="SA1413" Action="None" /> <!-- Use trailing comma in multi-line initializers. -->
+    <Rule Id="SA1516" Action="None" /> <!-- Elements should be separated by blank line. -->
+    <Rule Id="SA1600" Action="None" /> <!-- A C# code element is missing a documentation header. -->
+    <Rule Id="SA1609" Action="None" /> <!-- The Xml header documentation for a C# property does not contain a <value> tag. -->
+  </Rules>
+</RuleSet>
+

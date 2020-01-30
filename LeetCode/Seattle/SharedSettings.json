@@ -1,0 +1,131 @@
+{
+  "Serilog": {
+    "Using": [
+      "Serilog.Sinks.Console",
+      "Serilog.Sinks.File",
+      "Serilog.Filters.Expressions",
+      "Serilog.Enrichers.Environment"
+    ],
+    "MinimumLevel": {
+      "Default": "Debug",
+      "Override": {
+        "Microsoft.EntityFrameworkCore": "Warning"
+      }
+    },
+    "WriteTo": [
+      //Sublogger for events displayed inside console window
+      {
+        "Name": "Logger",
+        "Args": {
+          "configureLogger": {
+            "MinimumLevel": "Warning",
+            //Log all event to console
+            "WriteTo": [
+              {
+                "Name": "Console",
+                "Args": {
+                  "outputTemplate": "[{Timestamp:HH:mm:ss:fff} {Level:u3}] {Message:lj}{NewLine}MachineName: {MachineName}{NewLine}{Exception}"
+                }
+              }
+            ]
+          }
+        }
+      },
+      //Sublogger for events written into file
+      {
+        "Name": "Logger",
+        "Args": {
+          "configureLogger": {
+            "MinimumLevel": "Information",
+            //Log all event to file
+            "WriteTo": [
+              {
+                "Name": "File",
+                "Args": {
+                  "path": "%LOGDIR%\\logs\\%LOGASSEMBLYNAME%_log.txt",
+                  "rollingInterval": "Day",
+                  "shared": true,
+                  "outputTemplate": "[{Timestamp:HH:mm:ss:fff} {Level:u3}] {Properties:j} {Message:lj}{NewLine}MachineName: {MachineName}{NewLine}{Exception}"
+                }
+              }
+            ]
+          }
+        }
+      },
+      //Sublogger for error events
+      {
+        "Name": "Logger",
+        "Args": {
+          "configureLogger": {
+            "MinimumLevel": "Error",
+            "WriteTo": [
+              {
+                "Name": "File",
+                "Args": {
+                  "path": "%LOGDIR%\\logs\\%LOGASSEMBLYNAME%_error.txt",
+                  "rollingInterval": "Day",
+                  "shared": true,
+                  "outputTemplate": "[{Timestamp:HH:mm:ss:fff} {Level:u3}] {Properties:j} {Message:lj}{NewLine}MachineName: {MachineName}{NewLine}{Exception}"
+                }
+              }
+            ]
+          }
+        }
+      },
+      //Sublogger for latency filter logger
+      {
+        "Name": "Logger",
+        "Args": {
+          "configureLogger": {
+            "WriteTo": [
+              {
+                "Name": "File",
+                "Args": {
+                  "path": "%LOGDIR%\\logs\\%LOGASSEMBLYNAME%_GrainLatencyLogger.txt",
+                  "rollingInterval": "Day",
+                  "shared": true,
+                  "outputTemplate": "[{Timestamp:HH:mm:ss:fff} {Level:u3}] {Properties:j} {Message:lj}{NewLine}MachineName: {MachineName}{NewLine}{Exception}"
+                }
+              }
+            ],
+            "Filter": [
+              {
+                "Name": "ByIncludingOnly",
+                "Args": {
+                  "expression": "StartsWith(@Properties['SourceContext'], 'GrainLatencyLogger')"
+                }
+              }
+            ]
+          }
+        }
+      },
+      //Sublogger for business logger
+      {
+        "Name": "Logger",
+        "Args": {
+          "configureLogger": {
+            "WriteTo": [
+              {
+                "Name": "File",
+                "Args": {
+                  "path": "%LOGDIR%\\logs\\%LOGASSEMBLYNAME%_BusinessLogs.txt",
+                  "rollingInterval": "Day",
+                  "shared": true,
+                  "outputTemplate": "[{Timestamp:HH:mm:ss:fff} {Level:u3}] {Message:lj}{NewLine}MachineName: {MachineName}{NewLine}{Exception}"
+                }
+              }
+            ],
+            "Filter": [
+              {
+                "Name": "ByIncludingOnly",
+                "Args": {
+                  "expression": "StartsWith(@Properties['SourceContext'], 'BusinessLogsLogger')"
+                }
+              }
+            ]
+          }
+        }
+      }
+    ]
+  }
+}

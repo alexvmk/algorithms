@@ -2,9 +2,12 @@
 
 namespace Seattle
 {
-    class Program
+    /// <summary>
+    /// Entry point.
+    /// </summary>
+    public class Program
     {
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
             Console.WriteLine("Hello World!");
         }

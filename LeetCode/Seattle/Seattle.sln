@@ -3,7 +3,22 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29709.97
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Seattle", "Seattle.csproj", "{AEE226FE-9FA7-4B0A-B8F4-72116020916E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Seattle", "Seattle.csproj", "{AEE226FE-9FA7-4B0A-B8F4-72116020916E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{EFAC836F-8CF1-468C-BB74-7D54F3E6744E}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+		Directory.Build.props = Directory.Build.props
+		Global.Stylecop.ruleset = Global.Stylecop.ruleset
+		NuGet.Config = NuGet.Config
+		README.md = README.md
+		stylecop.json = stylecop.json
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SharedSettings", "SharedSettings", "{2F14611A-2B95-441D-9115-33E0E2E663B4}"
+	ProjectSection(SolutionItems) = preProject
+		SharedSettings.json = SharedSettings.json
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

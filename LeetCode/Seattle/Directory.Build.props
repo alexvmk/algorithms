@@ -1,0 +1,217 @@
+<Project>
+
+  <PropertyGroup>
+    <!-- Common rule set shared by all projects -->
+    <CodeAnalysisRuleset>$(MSBuildThisFileDirectory)Global.Stylecop.ruleset</CodeAnalysisRuleset>
+
+    <!-- Latest C# language version support -->
+    <LangVersion>7.3</LangVersion>
+
+    <!-- Set x64 build architecture for all projects -->
+    <PlatformTarget>x64</PlatformTarget>
+
+    <!-- Target framework -->
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+
+    <!--Version  -->
+    <VersionPrefix>1.0.0</VersionPrefix>
+    <VersionSuffix>dev</VersionSuffix>
+
+    <!--Copyright stuff  -->
+    <Company>Seattle</Company>
+    <Product>Seattle</Product>
+
+    <!--Suppress AssemblyInfo.xs generation to avoid Roslyn Analyzers issues-->
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>  
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <!--Treat specified warnings as errors.-->
+    <WarningsAsErrors>
+        NU1605;<!--Package downgrade detected-->
+        IDE1006;<!--Missing _ prefix.-->
+        IDE0044;<!--Missing readonly modifier-->
+        CS0649;<!--Field never assigned-->
+        CS1998;<!--Async method lacks await operator.-->
+        CS4014;<!--Async method invocation without await expression.-->
+        SA1028;<!--Code should not contain trailing whitespace-->
+        SA1129;<!--Do not use default ValueType constructor-->
+        SA1201;<!--Incorrect members order.-->
+        SA1202;<!--Incorrect members order with different visibility type.-->
+        SA1203;<!--Constant fields should appear before non-constant fields.-->
+        SA1204;<!--Static members should appear before non-static memebers.-->
+        SA1214;<!--Readonly fields should appear before non-readonly fields.-->
+        SA1401;<!--Field should be private. Also mean that publicly visible value should be made as properties and internal - fields.
+        Public static readonly and public const fields does not count.-->
+        SA1505;<!--Opening curly braces should not be followed by a blank line-->
+        SA1507;<!--Multiple blank lines in a row-->
+        SA1508;<!--Closing curly braces should not be preceded by a blank line-->
+        SA1512;<!--Single line comment should not be followed by a blank line-->
+        SA1513;<!--Closing brace should be followed by blank line-->
+        SA1515;<!--Single-line comment should be preceded by a blank line-->
+        SA1518;<!--File is required to end with a single newline character-->
+        SA1614;<!--Element parameter documentation should have text.-->
+        SA1623;<!--The property's documentation summary text should begin with: 'Gets'.-->
+        SA1629;<!--Documentation text should end with period.-->
+        SA1633;<!--File header is missing or not located at the top of the file.-->
+        SA1649;<!--File name should match first type name.-->
+    </WarningsAsErrors>
+  </PropertyGroup>
+  
+  <ItemGroup>
+    <!-- Add reference to StyleCop analyzers to all projects  -->
+    <PackageReference Include="StyleCop.Analyzers" Version="1.1.118" />
+
+    <!-- Common StyleCop configuration -->
+    <AdditionalFiles Include="$(SolutionDir)stylecop.json" />
+      
+    <Content Include="$(SolutionDir)stylecop.json">
+      <Link>stylecop.json</Link>
+    </Content>
+
+  </ItemGroup>
+
+  <!-- Common output 'obj/bin' properties -->
+  <PropertyGroup>
+    <!-- Set $(SolutionDir) specifically if is not specified by IDE or build parameter -->
+    <SolutionDir Condition="'$(SolutionDir)' == ''">$(MSBuildThisFileDirectory)</SolutionDir>
+      
+    <!-- Common 'obj' folder -->
+    <BaseIntermediateOutputPath>$(SolutionDir)\_obj\$(Configuration)\$(MSBuildProjectName)</BaseIntermediateOutputPath>
+    <IntermediateOutputPath>$(BaseIntermediateOutputPath)\$(Configuration)\</IntermediateOutputPath>
+    
+    <!-- Common 'bin' folder for dll's, hosting Apps are configured separately in their respective Directory.Build.props files -->
+    <OutputPath>$(SolutionDir)\_bin\$(Configuration)\_dll\$(MSBuildProjectName)</OutputPath>
+  </PropertyGroup>
+
+  <!-- Shared Package Versions -->
+  <PropertyGroup>
+
+    <!-- Microsoft related packages -->
+    <MicrosoftApplicationInsightsAspNetCoreVersion>2.6.1</MicrosoftApplicationInsightsAspNetCoreVersion>
+    <MicrosoftAspNetCoreAuthenticationOpenIdConnectVersion>2.1.0</MicrosoftAspNetCoreAuthenticationOpenIdConnectVersion>
+    <MicrosoftAspNetCoreDiagnosticsVersion>2.1.0</MicrosoftAspNetCoreDiagnosticsVersion>
+    <MicrosoftAspNetCoreIdentityVersion>2.1.0</MicrosoftAspNetCoreIdentityVersion>
+    <MicrosoftAspNetCoreMvcVersion>2.2.0</MicrosoftAspNetCoreMvcVersion>
+    <MicrosoftAspNetCoreMvcVersioningVersion>2.3.0</MicrosoftAspNetCoreMvcVersioningVersion>
+    <MicrosoftAspNetCoreMvcVersioningApiExplorerVersion>2.2.0</MicrosoftAspNetCoreMvcVersioningApiExplorerVersion>
+    <MicrosoftAspNetCoreMvcViewFeaturesVersion>2.2.0</MicrosoftAspNetCoreMvcViewFeaturesVersion>
+    <MicrosoftAspNetCoreMvcTagHelpersVersion>2.2.0</MicrosoftAspNetCoreMvcTagHelpersVersion>
+    <MicrosoftAspNetCoreIdentityVersion>2.1.0</MicrosoftAspNetCoreIdentityVersion>
+    <MicrosoftAspNetCoreDiagnosticsVersion>2.1.0</MicrosoftAspNetCoreDiagnosticsVersion>
+    <MicrosoftAspNetCoreMvcVersioningApiExplorer>2.2.0</MicrosoftAspNetCoreMvcVersioningApiExplorer>
+    <MicrosoftAspNetCoreServerIISIntegrationVersion>2.1.0</MicrosoftAspNetCoreServerIISIntegrationVersion>
+    <MicrosoftAspNetCoreServerKestrelVersion>2.1.0</MicrosoftAspNetCoreServerKestrelVersion>
+    <MicrosoftAspNetCoreSpaServicesExtensionsVersion>2.2.0</MicrosoftAspNetCoreSpaServicesExtensionsVersion>
+    <MicrosoftAspNetCoreStaticFilesVersion>2.1.0</MicrosoftAspNetCoreStaticFilesVersion>
+    <MicrosoftMicrosoftAzureSignalRVersion>1.0.5</MicrosoftMicrosoftAzureSignalRVersion>
+    <MicrosoftEntityFrameworkCoreVersion>2.2.3</MicrosoftEntityFrameworkCoreVersion>
+    <MicrosoftEntityFrameworkCoreSqlServerVersion>2.2.3</MicrosoftEntityFrameworkCoreSqlServerVersion>
+    <MicrosoftEntityFrameworkCoreToolsVersion>2.2.3</MicrosoftEntityFrameworkCoreToolsVersion>
+    <MicrosoftExtensionsConfigurationVersion>2.2.0</MicrosoftExtensionsConfigurationVersion>
+    <MicrosoftExtensionsConfigurationBinderVersion>2.2.0</MicrosoftExtensionsConfigurationBinderVersion>
+    <MicrosoftExtensionsConfigurationEnvironmentVariablesVersion>2.2.0</MicrosoftExtensionsConfigurationEnvironmentVariablesVersion>
+    <MicrosoftExtensionsConfigurationFileExtensionsVersion>2.2.0</MicrosoftExtensionsConfigurationFileExtensionsVersion>
+    <MicrosoftExtensionsConfigurationJsonVersion>2.2.0</MicrosoftExtensionsConfigurationJsonVersion>
+    <MicrosoftExtensionsConfigurationCommandLine>2.2.0</MicrosoftExtensionsConfigurationCommandLine>
+    <MicrosoftExtensionsDependencyInjectionVersion>2.2.0</MicrosoftExtensionsDependencyInjectionVersion>
+    <MicrosoftExtensionsDependencyInjectionAbstractionsVersion>2.2.0</MicrosoftExtensionsDependencyInjectionAbstractionsVersion>
+    <MicrosoftExtensionsPlatformAbstractionsVersion>1.1.0</MicrosoftExtensionsPlatformAbstractionsVersion>
+    <MicrosoftExtensionsOptionsVersion>2.2.0</MicrosoftExtensionsOptionsVersion>
+    <MicrosoftExtensionsOptionsConfigurationExtensionsVersion>2.1.0</MicrosoftExtensionsOptionsConfigurationExtensionsVersion>
+    <MicrosoftExtensionsHttpVersion>2.2.0</MicrosoftExtensionsHttpVersion>
+    <MicrosoftVisualStudioWebCodeGenerationToolsVersion>2.0.1</MicrosoftVisualStudioWebCodeGenerationToolsVersion>
+    <MicrosoftAspNetCoreSignalRVersion>1.1.0</MicrosoftAspNetCoreSignalRVersion>
+    <MicrosoftAspNetCoreSignalRClientVersion>1.1.0</MicrosoftAspNetCoreSignalRClientVersion>
+    <MicrosoftExtensionsHttpVersion>2.2.0</MicrosoftExtensionsHttpVersion>
+    <IdentityModelTokensJwtVersion>5.3.0</IdentityModelTokensJwtVersion>
+    <SystemNetHttpFormattingExtensionVersion>5.2.3</SystemNetHttpFormattingExtensionVersion>
+    <MicrosoftAspNetCoreAuthorization>2.2.0</MicrosoftAspNetCoreAuthorization>
+
+    <!-- Orleans related packages -->
+    <MicrosoftOrleansClientVersion>2.3.0</MicrosoftOrleansClientVersion>
+    <MicrosoftOrleansClusteringAzureStorageVersion>2.3.0</MicrosoftOrleansClusteringAzureStorageVersion>
+    <MicrosoftOrleansCoreVersion>2.3.0</MicrosoftOrleansCoreVersion>
+    <MicrosoftOrleansCodeGeneratorMSBuildVersion>2.3.0</MicrosoftOrleansCodeGeneratorMSBuildVersion>
+    <MicrosoftOrleansCoreAbstractionsVersion>2.3.0</MicrosoftOrleansCoreAbstractionsVersion>
+    <MicrosoftOrleansOrleansCodeGeneratorBuildVersion>2.3.0</MicrosoftOrleansOrleansCodeGeneratorBuildVersion>
+    <MicrosoftOrleansOrleansProvidersVersion>2.3.0</MicrosoftOrleansOrleansProvidersVersion>
+    <MicrosoftOrleansOrleansRuntimeVersion>2.3.0</MicrosoftOrleansOrleansRuntimeVersion>
+    <MicrosoftOrleansTestingHostVersion>2.3.0</MicrosoftOrleansTestingHostVersion>
+    <MicrosoftOrleansPersistenceAzureStorageVersion>2.3.0</MicrosoftOrleansPersistenceAzureStorageVersion>
+    <MicrosoftOrleansRuntimeAbstractionsVersion>2.3.0</MicrosoftOrleansRuntimeAbstractionsVersion>
+    <MicrosoftOrleansServerVersion>2.3.0</MicrosoftOrleansServerVersion>
+    <MicrosoftOrleansTransactionsVersion>2.3.0</MicrosoftOrleansTransactionsVersion>
+    <OrleansStreamingAzureStorageVersion>2.3.0</OrleansStreamingAzureStorageVersion>
+    <OrleansRemindersAzureStorageVersion>2.3.0</OrleansRemindersAzureStorageVersion>
+    <MicrosoftOrleansOrleansTelemetryConsumersAI>2.3.0</MicrosoftOrleansOrleansTelemetryConsumersAI>
+    <MicrosoftOrleansOrleansTelemetryConsumersCounters>2.3.0</MicrosoftOrleansOrleansTelemetryConsumersCounters>
+    <MicrosoftExtensionsHosting>2.2.0</MicrosoftExtensionsHosting>
+
+    <!-- Orleans tools packages -->
+    <OrleansDashboardVersion>2.3.1</OrleansDashboardVersion>
+
+    <!-- Data access related packages -->
+    <MongoDBDriverVersion>2.8.0</MongoDBDriverVersion>
+    <MongoDBDriverGridFSVersion>2.8.0</MongoDBDriverGridFSVersion>
+
+    <!-- Test related packages -->
+    <DotnetXunitCliToolVersion>2.3.1</DotnetXunitCliToolVersion>
+    <FluentAssertionsVersion>5.6.0</FluentAssertionsVersion>
+    <MicrosoftTestSdkVersion>15.9.0</MicrosoftTestSdkVersion>
+    <MoqVersion>4.10.1</MoqVersion>
+    <MoqAutoMockVersion>1.2.0.120</MoqAutoMockVersion>
+    <RestSharpVersion>106.5.4</RestSharpVersion>
+    <XunitVersion>2.4.1</XunitVersion>
+    <XunitRunnerVisualStudioVersion>2.4.1</XunitRunnerVisualStudioVersion>
+    <XunitRunnerConsoleVersion>2.4.1</XunitRunnerConsoleVersion>
+    <DotnetXunitCliToolVersion>2.3.1</DotnetXunitCliToolVersion>
+
+    <!-- Authentication related packages -->
+    <IdentityServer4Version>2.3.2</IdentityServer4Version>
+    <IdentityServer4AccessTokenValidationVersion>2.7.0</IdentityServer4AccessTokenValidationVersion>
+    <IdentityModelVersion>3.10.4</IdentityModelVersion>
+
+    <!-- Logging related packages -->
+    <MicrosoftExtensionsLoggingVersion>2.2.0</MicrosoftExtensionsLoggingVersion>
+    <MicrosoftExtensionsLoggingConsoleVersion>2.1.0</MicrosoftExtensionsLoggingConsoleVersion>
+    <MicrosoftExtensionsLoggingDebugVersion>2.1.0</MicrosoftExtensionsLoggingDebugVersion>
+    <MicrosoftExtensionsLoggingFilterVersion>1.1.2</MicrosoftExtensionsLoggingFilterVersion>
+    <MicrosoftExtensionsLoggingAbstractionsVersion>2.2.0</MicrosoftExtensionsLoggingAbstractionsVersion>
+    <MicrosoftExtensionsLoggingApplicationInsights>2.9.1</MicrosoftExtensionsLoggingApplicationInsights>
+    <MicrosoftApplicationInsightsVersion>2.9.1</MicrosoftApplicationInsightsVersion>
+    <OrleansProvidersMongoDBVersion>2.0.1</OrleansProvidersMongoDBVersion>
+    <SerilogExtensionsLoggingVersion>2.0.2</SerilogExtensionsLoggingVersion>
+    <SerilogFiltersExpressionsVersion>2.0.0</SerilogFiltersExpressionsVersion>
+    <SerilogSettingsConfigurationVersion>3.0.1</SerilogSettingsConfigurationVersion>
+    <SerilogSinksConsoleVersion>3.1.1</SerilogSinksConsoleVersion>
+    <SerilogSinksFileVersion>4.0.0</SerilogSinksFileVersion>
+    <SerilogSinksRollingFileVersion>3.3.0</SerilogSinksRollingFileVersion>
+    <SerilogSinksApplicationInsightsVersion>3.0.3</SerilogSinksApplicationInsightsVersion>
+    <SerilogEnrichersEnvironmentVersion>2.1.3</SerilogEnrichersEnvironmentVersion>
+    <SerilogVersion>2.8.0</SerilogVersion>
+
+    <!-- Tooling related packages -->
+    <AutoMapperVersion>8.0.0</AutoMapperVersion>
+    <DotNetCliToolReferenceBundlerMinifierCoreVersion>2.2.301</DotNetCliToolReferenceBundlerMinifierCoreVersion>
+    <NewtonsoftJsonVersion>12.0.1</NewtonsoftJsonVersion>
+    <NexmoCsharpClientVersion>3.2.4</NexmoCsharpClientVersion>
+    <NodaTimeVersion>2.4.2</NodaTimeVersion>
+    <PollyExtensionsHttpVersion>3.0.0</PollyExtensionsHttpVersion>
+    <PollyVersion>7.1.0</PollyVersion>
+    <ScrutorVersion>2.2.2</ScrutorVersion>
+    <SwashbuckleAspNetCoreVersion>4.0.1</SwashbuckleAspNetCoreVersion>
+    <SwashbuckleAspNetCoreExamplesVersion>2.9.0</SwashbuckleAspNetCoreExamplesVersion>
+    <SwashbuckleAspNetCoreAnnotations>4.0.1</SwashbuckleAspNetCoreAnnotations>
+    <StatelessVersion>4.2.1</StatelessVersion>
+
+     <!--PowerBi -->
+     <PowerBiApiVersion>2.5.0</PowerBiApiVersion>
+      
+      <!--WindowsAzure -->
+      <WindowsAzureStorageVersion>9.3.3</WindowsAzureStorageVersion>
+      
+     <ActiveDirectory>4.5.1</ActiveDirectory>
+  </PropertyGroup>
+
+</Project>

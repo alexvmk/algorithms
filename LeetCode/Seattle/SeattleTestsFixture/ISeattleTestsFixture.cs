@@ -1,6 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿// Copyright (c) Aleksandr Rakushev (2020-present). All rights reserved.
+
+using System;
 
 namespace Seattle
 {

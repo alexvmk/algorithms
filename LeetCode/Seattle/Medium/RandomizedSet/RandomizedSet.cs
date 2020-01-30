@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿// Copyright (c) Aleksandr Rakushev (2020-present). All rights reserved.
 
 namespace Seattle.Medium.RandomizedSet
 {
@@ -13,7 +11,6 @@ namespace Seattle.Medium.RandomizedSet
     /// </summary>
     public class RandomizedSet
     {
-
         /** Initialize your data structure here. */
         public RandomizedSet()
         {
