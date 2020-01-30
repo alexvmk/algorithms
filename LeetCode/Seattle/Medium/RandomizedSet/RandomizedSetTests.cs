@@ -16,7 +16,7 @@ namespace Seattle.Medium.RandomizedSet
         }
 
         [Fact]
-        public void Test1()
+        public void RandomizedSet()
         {
             // Init an empty set.
             RandomizedSet randomSet = new RandomizedSet();
