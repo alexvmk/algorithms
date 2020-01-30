@@ -8,7 +8,7 @@ namespace Seattle
 {
     public class SeattleTestsFixture : ISeattleTestsFixture
     {
-        public IServiceProvider ServiceProvider;
+        private IServiceProvider _serviceProvider;
 
         IServiceProvider ISeattleTestsFixture.ServiceProvider => throw new NotImplementedException();
 
