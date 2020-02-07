@@ -27,35 +27,6 @@
 
   <PropertyGroup>
     <!--Treat specified warnings as errors.-->
-    <WarningsAsErrors>
-        NU1605;<!--Package downgrade detected-->
-        IDE1006;<!--Missing _ prefix.-->
-        IDE0044;<!--Missing readonly modifier-->
-        CS0649;<!--Field never assigned-->
-        CS1998;<!--Async method lacks await operator.-->
-        CS4014;<!--Async method invocation without await expression.-->
-        SA1028;<!--Code should not contain trailing whitespace-->
-        SA1129;<!--Do not use default ValueType constructor-->
-        SA1201;<!--Incorrect members order.-->
-        SA1202;<!--Incorrect members order with different visibility type.-->
-        SA1203;<!--Constant fields should appear before non-constant fields.-->
-        SA1204;<!--Static members should appear before non-static memebers.-->
-        SA1214;<!--Readonly fields should appear before non-readonly fields.-->
-        SA1401;<!--Field should be private. Also mean that publicly visible value should be made as properties and internal - fields.
-        Public static readonly and public const fields does not count.-->
-        SA1505;<!--Opening curly braces should not be followed by a blank line-->
-        SA1507;<!--Multiple blank lines in a row-->
-        SA1508;<!--Closing curly braces should not be preceded by a blank line-->
-        SA1512;<!--Single line comment should not be followed by a blank line-->
-        SA1513;<!--Closing brace should be followed by blank line-->
-        SA1515;<!--Single-line comment should be preceded by a blank line-->
-        SA1518;<!--File is required to end with a single newline character-->
-        SA1614;<!--Element parameter documentation should have text.-->
-        SA1623;<!--The property's documentation summary text should begin with: 'Gets'.-->
-        SA1629;<!--Documentation text should end with period.-->
-        SA1633;<!--File header is missing or not located at the top of the file.-->
-        SA1649;<!--File name should match first type name.-->
-    </WarningsAsErrors>
   </PropertyGroup>
   
   <ItemGroup>
