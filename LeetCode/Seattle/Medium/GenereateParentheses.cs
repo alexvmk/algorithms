@@ -13,20 +13,20 @@ namespace Seattle.Easy.BestTimeToBuyAndSellStock
     /// </summary>
     public class GenereateParentheses
     {
-        public List<string> Generate(int pairsNumb)
+        public IList<string> GenerateParenthesis(int n)
         {
-            if (pairsNumb <= 0)
+            if (n <= 0)
             {
                 return new List<string>();
             }
 
-            if (pairsNumb == 1)
+            if (n == 1)
             {
                 return new List<string>() { "()"};
             }
 
             var resList = new List<string>();
-            BackTrack(resList, string.Empty, 0, 0, pairsNumb);
+            BackTrack(resList, string.Empty, 0, 0, n);
             return resList;
         }
 
@@ -63,19 +63,19 @@ namespace Seattle.Easy.BestTimeToBuyAndSellStock
         {
             var algorithm = new GenereateParentheses();
 
-            var res = algorithm.Generate(0);
+            var res = algorithm.GenerateParenthesis(0);
             Assert.Empty(res);
 
-            res = algorithm.Generate(1);
+            res = algorithm.GenerateParenthesis(1);
             Assert.Single(res);
             Assert.Equal("()", res[0], StringComparer.CurrentCulture);
 
-            res = algorithm.Generate(2);
+            res = algorithm.GenerateParenthesis(2);
             Assert.Equal(2, res.Count);
             Assert.Contains("()()", res, StringComparer.CurrentCulture);
             Assert.Contains("(())", res, StringComparer.CurrentCulture);
 
-            res = algorithm.Generate(3);
+            res = algorithm.GenerateParenthesis(3);
             Assert.Equal(5, res.Count);
             Assert.Contains("((()))", res, StringComparer.CurrentCulture);
             Assert.Contains("(()())", res, StringComparer.CurrentCulture);
