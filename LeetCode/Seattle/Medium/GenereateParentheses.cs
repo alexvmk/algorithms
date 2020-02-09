@@ -15,6 +15,7 @@ namespace Seattle.Easy.BestTimeToBuyAndSellStock
     {
         public IList<string> GenerateParenthesis(int n)
         {
+            // corner cases:
             if (n <= 0)
             {
                 return new List<string>();
@@ -25,24 +26,30 @@ namespace Seattle.Easy.BestTimeToBuyAndSellStock
                 return new List<string>() { "()"};
             }
 
+            // preparing the result list:
             var resList = new List<string>();
+            // start the backtrack process:
             BackTrack(resList, string.Empty, 0, 0, n);
             return resList;
         }
 
         private void BackTrack(List<string> resList, string curStr, int open, int close, int pairsNumb)
         {
+            // end of the execution stack and add result into output list:
             if (curStr.Length == pairsNumb * 2)
             {
                 resList.Add(curStr);
                 return;
             }
 
+            // check the number of open parentheses that it no more then their max count:
             if (open < pairsNumb)
             {
+                // backtrack it with "("
                 BackTrack(resList, curStr + "(", open + 1, close, pairsNumb);
             }
 
+            // check the number of close parentheses that it no more then open count:
             if (close < open)
             {
                 BackTrack(resList, curStr + ")", open, close + 1, pairsNumb);
