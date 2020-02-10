@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Text;
 using Xunit;
 
-namespace Seattle.Easy.BestTimeToBuyAndSellStock
+namespace Seattle.Medium
 {
     /// <summary>
     /// Generate Parentheses.
