@@ -17,7 +17,7 @@ namespace Seattle.Medium
     public class CoinChangeProblem
     {
         public int CoinChange(int[] coins, int amount)
-        {            
+        {
             int max = amount + 1;
             var dp = new int[max];
             for (int i = 0; i < dp.Length; i++)
