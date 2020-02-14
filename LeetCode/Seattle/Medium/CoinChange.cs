@@ -30,7 +30,7 @@ namespace Seattle.Medium
             {
                 for (int j = 0; j < coins.Length; j++)
                 {
-                    if (dp[i] >= i)
+                    if (i >= coins[j])
                     {
                         dp[i] = Math.Min(dp[i], dp[i - coins[j]]);
                     }
