@@ -32,7 +32,7 @@ namespace Seattle.Medium
                 {
                     if (i >= coins[j])
                     {
-                        dp[i] = Math.Min(dp[i], dp[i - coins[j]]);
+                        dp[i] = Math.Min(dp[i], dp[i - coins[j]] + 1);
                     }
                 }
             }
@@ -55,8 +55,15 @@ namespace Seattle.Medium
             var res = algorithm.CoinChange(new[] { 2 }, 3);
             Assert.Equal(res, -1);
 
-            res = algorithm.CoinChange(new[] { 1, 2, 5 }, 11);
+            res = algorithm.CoinChange(new[] { 1, 2, 3 }, 5);
+            // 2 + 3
+            Assert.Equal(2, res);
 
+            res = algorithm.CoinChange(new[] { 1, 2, 5 }, 11);
+            // 5 + 5 + 1
+            Assert.Equal(3, res);
+
+            res = algorithm.CoinChange(new[] { 1, 2, 5 }, 11);
             // 5 + 5 + 1
             Assert.Equal(3, res);
         }
