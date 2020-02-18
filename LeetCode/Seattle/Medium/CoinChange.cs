@@ -13,6 +13,11 @@ namespace Seattle.Medium
     /// You are given coins of different denominations and a total amount of money amount.
     /// Write a function to compute the fewest number of coins that you need to make up that amount.
     /// If that amount of money cannot be made up by any combination of the coins, return -1.
+    ///
+    /// Complexity Analysis:
+    /// Time complexity : O(S* n)O(S∗n). On each step the algorithm finds the next F(i)F(i) in nn iterations,
+    ///    where 1\leq i \leq S1≤i≤S.Therefore in total the iterations are S* nS∗n.
+    /// Space complexity : O(S)O(S). We use extra space for the memoization table.
     /// </summary>
     public class CoinChangeProblem
     {
