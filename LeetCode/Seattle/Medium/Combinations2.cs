@@ -48,21 +48,23 @@ namespace Seattle.Medium
         [Fact]
         public void Combine()
         {
-            var algorithm = new Combinations();
-            var res = algorithm.Combine(0, 0);
+            var algorithm = new Combinations2();
+            var res = algorithm.CombinationSum2(null, 8);
             Assert.Empty(res);
 
-            res = algorithm.Combine(1, 0);
+            res = algorithm.CombinationSum2(new int[] { }, 0);
             Assert.Empty(res);
 
-            res = algorithm.Combine(0, 1);
+            res = algorithm.CombinationSum2(new int[] { 0 }, 1);
             Assert.Empty(res);
 
-            res = algorithm.Combine(1, 2);
-            Assert.Empty(res);
+            res = algorithm.CombinationSum2(new int[] { 1 }, 1);
+            Assert.Equal(1, res.Count);
+            Assert.Equal(1, res[0].Count);
+            Assert.Contains(1, res[0]);
 
             // output: [ [1], [2] ]
-            res = algorithm.Combine(2, 1);
+            res = algorithm.CombinationSum2(new int[] { 2 }, 1);
             Assert.Equal(2, res.Count);
             Assert.Equal(1, res[0].Count);
             Assert.Contains(1, res[0]);
@@ -80,7 +82,7 @@ namespace Seattle.Medium
             //   [2,4],
             //   [3,4],
             // ]
-            res = algorithm.Combine(4, 2);
+            res = algorithm.CombinationSum2(new int[] { 10, 1, 2, 7, 6, 1, 5 }, 8);
             Assert.Equal(6, res.Count);
             Assert.Equal(2, res[0].Count);
             Assert.Contains(1, res[0]);
