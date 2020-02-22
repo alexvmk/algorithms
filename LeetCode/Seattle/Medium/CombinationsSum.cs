@@ -11,6 +11,7 @@ namespace Seattle.Medium
     /// <summary>
     /// Combinations2.
     /// https://leetcode.com/problems/combination-sum/.
+    /// https://leetcode.com/problems/combination-sum/discuss/16502/A-general-approach-to-backtracking-questions-in-Java-(Subsets-Permutations-Combination-Sum-Palindrome-Partitioning)
     /// </summary>
     public class CombinationsSum
     {
@@ -36,27 +37,16 @@ namespace Seattle.Medium
                 return;
             }
 
-            if (i >= candidates.Length)
-            {
-                return;
-            }
-
             if (currSum > target)
             {
                 return;
             }
 
-            if (i != 0)
-            {
-                currComb.Add(candidates[i]);
-                BackTrack(i, result, candidates, currComb, currSum + candidates[i], target);
-                currComb.RemoveAt(currComb.Count - 1);
-            }
 
             for (int j = i; j < candidates.Length; j++)
             {
                 currComb.Add(candidates[j]);
-                BackTrack(j + 1, result, candidates, currComb, currSum + candidates[j], target);
+                BackTrack(j, result, candidates, currComb, currSum + candidates[j], target);
                 currComb.RemoveAt(currComb.Count - 1);
             }
         }
@@ -76,10 +66,7 @@ namespace Seattle.Medium
             var res = algorithm.CombinationSum2(null, 8);
             Assert.Empty(res);
 
-            res = algorithm.CombinationSum2(new int[] { }, 0);
-            Assert.Empty(res);
-
-            res = algorithm.CombinationSum2(new int[] { 0 }, 1);
+            res = algorithm.CombinationSum2(new int[] { }, 2);
             Assert.Empty(res);
 
             res = algorithm.CombinationSum2(new int[] { 1 }, 1);
@@ -87,13 +74,15 @@ namespace Seattle.Medium
             Assert.Equal(1, res[0].Count);
             Assert.Contains(1, res[0]);
 
-            // output: [ [1], [2] ]
             res = algorithm.CombinationSum2(new int[] { 2 }, 1);
-            Assert.Equal(2, res.Count);
-            Assert.Equal(1, res[0].Count);
-            Assert.Contains(1, res[0]);
-            Assert.Equal(1, res[1].Count);
-            Assert.Contains(2, res[1]);
+            Assert.Empty(res);
+
+            // output: [ [1, 1] ]
+            res = algorithm.CombinationSum2(new int[] { 1 }, 2);
+            Assert.Equal(1, res.Count);
+            Assert.Equal(2, res[0].Count);
+            Assert.Equal(1, res[0][0]);
+            Assert.Equal(1, res[0][1]);
 
             // Input: candidates = [2,3,6,7], target = 7,
             // A solution set is:
@@ -104,13 +93,25 @@ namespace Seattle.Medium
             res = algorithm.CombinationSum2(new int[] { 2, 3, 6, 7 }, 7);
             Assert.Equal(2, res.Count);
 
-            Assert.Equal(1, res[0].Count);
-            Assert.Contains(7, res[0]);
+            Assert.Contains(res, x => x.Count == 1);
+            Assert.Contains(res, x => x.Count == 3);
 
-            Assert.Equal(3, res[1].Count);
-            Assert.Contains(2, res[1]);
-            Assert.Contains(2, res[1]);
-            Assert.Contains(3, res[1]);
+            foreach (var r in res)
+            {
+                if (r.Count == 1)
+                {
+                    Assert.Equal(1, r.Count);
+                    Assert.Contains(7, r);
+                }
+
+                if (r.Count == 3)
+                {
+                    Assert.Equal(3, r.Count);
+                    Assert.Contains(2, r);
+                    Assert.Contains(2, r);
+                    Assert.Contains(3, r);
+                }
+            }
         }
     }
 }
