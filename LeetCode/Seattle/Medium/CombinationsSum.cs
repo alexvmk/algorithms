@@ -42,7 +42,6 @@ namespace Seattle.Medium
                 return;
             }
 
-
             for (int j = i; j < candidates.Length; j++)
             {
                 currComb.Add(candidates[j]);
