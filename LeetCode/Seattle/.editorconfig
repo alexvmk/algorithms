@@ -225,3 +225,9 @@ dotnet_naming_style.camel_case_and_prefix_with_underscore_style.capitalization  
 
 dotnet_naming_style.pascal_case_and_prefix_with_I_style.required_prefix                               = I
 dotnet_naming_style.pascal_case_and_prefix_with_I_style.capitalization                                = pascal_case
+
+# SA1503: Braces should not be omitted
+dotnet_diagnostic.SA1503.severity = none
+
+# SA1520: Use braces consistently
+dotnet_diagnostic.SA1520.severity = none
