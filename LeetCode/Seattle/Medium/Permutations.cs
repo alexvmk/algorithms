@@ -25,16 +25,6 @@ namespace Seattle.Medium
             return list;
         }
 
-        public IList<string> PermuteStr(string chars)
-        {
-            var list = new List<IList<char>>();
-            if (chars == null || chars.Length == 0)
-                return new List<string>();
-
-            BackTrack(list, new List<char>(), chars.ToCharArray());
-            return list.Select(x => new string(x.ToArray())).ToList();
-        }
-
         private void BackTrack(IList<IList<int>> list, IList<int> subset, int[] chars)
         {
             if (subset.Count == chars.Length)
@@ -49,6 +39,17 @@ namespace Seattle.Medium
                     subset.RemoveAt(subset.Count - 1);
                 }
             }
+        }
+
+        #region PermutationII with int array
+        public IList<string> PermuteStr(string chars)
+        {
+            var list = new List<IList<char>>();
+            if (chars == null || chars.Length == 0)
+                return new List<string>();
+
+            BackTrack(list, new List<char>(), chars.ToCharArray());
+            return list.Select(x => new string(x.ToArray())).ToList();
         }
 
         private void BackTrack(IList<IList<char>> list, IList<char> subset, char[] chars)
@@ -66,6 +67,7 @@ namespace Seattle.Medium
                 }
             }
         }
+        #endregion
     }
 
     [Collection(SeattleCollectionFixture.SeattleCollectionFixtureName)]
