@@ -231,3 +231,9 @@ dotnet_diagnostic.SA1503.severity = none
 
 # SA1520: Use braces consistently
 dotnet_diagnostic.SA1520.severity = none
+
+# SA1124: Do not use regions
+dotnet_diagnostic.SA1124.severity = none
+
+# SA1202: Elements should be ordered by access
+dotnet_diagnostic.SA1202.severity = none
