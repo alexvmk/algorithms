@@ -58,9 +58,9 @@ namespace Seattle
         }
 
         [Collection(SeattleCollectionFixture.SeattleCollectionFixtureName)]
-        public class PalindromeNumberTests
+        public class _3SumTests
         {
-            public PalindromeNumberTests(SeattleTestsFixture seattleTestsFixture)
+            public _3SumTests(SeattleTestsFixture seattleTestsFixture)
             {
             }
 

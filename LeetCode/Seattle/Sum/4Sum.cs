@@ -16,7 +16,10 @@ namespace Seattle
     /// </summary>
     public class _4Sum
     {
+        public IList<IList<int>> FourSum(int[] nums, int target)
+        {
 
+        }
     }
 
     [Collection(SeattleCollectionFixture.SeattleCollectionFixtureName)]
@@ -29,8 +32,15 @@ namespace Seattle
         [Fact]
         public void IsPalindrome()
         {
+            // Given array nums = [1, 0, -1, 0, -2, 2], and target = 0.
+
+            // A solution set is:
+            // [
+            //  [-1,  0, 0, 1],
+            //  [-2, -1, 1, 2],
+            //  [-2,  0, 0, 2]
+            // ]
 
         }
     }
 }
-
