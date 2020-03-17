@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using Xunit;
 
-namespace Seattle.Medium
+namespace Seattle
 {
     /// <summary>
     /// Subsets.

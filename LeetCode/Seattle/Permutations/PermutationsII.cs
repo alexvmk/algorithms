@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using Xunit;
 
-namespace Seattle.Medium
+namespace Seattle
 {
     /// <summary>
     /// Permutations II.
@@ -46,7 +46,7 @@ namespace Seattle.Medium
             }
         }
 
-        #region PermutationII with int array
+        #region PermutationII with string
         public IList<string> PermuteUniqueStr(string str)
         {
             var list = new List<IList<char>>();
