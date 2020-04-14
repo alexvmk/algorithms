@@ -237,3 +237,12 @@ dotnet_diagnostic.SA1124.severity = none
 
 # SA1202: Elements should be ordered by access
 dotnet_diagnostic.SA1202.severity = none
+
+# IDE1006: Naming Styles
+dotnet_diagnostic.IDE1006.severity = none
+
+# SA1307: Accessible fields should begin with upper-case letter
+dotnet_diagnostic.SA1307.severity = none
+
+# SA1401: Fields should be private
+dotnet_diagnostic.SA1401.severity = none
