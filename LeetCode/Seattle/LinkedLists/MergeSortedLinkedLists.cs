@@ -31,7 +31,6 @@ namespace Seattle.LinkedLists
                 l2.next = MergeTwoLists(l1, l2.next);
                 return l2;
             }
-
         }
     }
 
