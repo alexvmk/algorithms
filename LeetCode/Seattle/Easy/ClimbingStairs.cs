@@ -14,10 +14,12 @@ namespace Seattle.Easy.BestTimeToBuyAndSellStock
     {
         public int ClimbStairs(int n)
         {
+            // calc Fibonacci Number:
             if (n == 1)
             {
                 return 1;
             }
+
             int first = 1;
             int second = 2;
             for (int i = 3; i <= n; i++)
@@ -26,6 +28,7 @@ namespace Seattle.Easy.BestTimeToBuyAndSellStock
                 first = second;
                 second = third;
             }
+
             return second;
         }
     }
