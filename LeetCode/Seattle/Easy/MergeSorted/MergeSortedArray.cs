@@ -8,10 +8,13 @@ using Xunit;
 namespace Seattle.Easy.BestTimeToBuyAndSellStock
 {
     /// <summary>
-    /// https://leetcode.com/problems/merge-sorted-array/ .
+    /// https://leetcode.com/problems/merge-sorted-array/ . 
     /// </summary>
     public class MergeSortedArray
     {
+        /// <summary>
+        /// O(n + m).
+        /// </summary>
         public void Merge(int[] nums1, int m, int[] nums2, int n)
         {
             var p1 = m - 1;
