@@ -12,10 +12,18 @@ namespace Seattle.Easy.BestTimeToBuyAndSellStock
     /// </summary>
     public class MergeSortedArray
     {
-        public int[] Merge(int[] nums1, int[] nums2)
+        public void Merge(int[] nums1, int m, int[] nums2, int n)
         {
-            return new int[] { 1, 2, 2, 3, 5, 6};
-            //return nums1;
+            var p1 = m - 1;
+            var p2 = n - 1;
+            var p = n + m - 1;
+
+            while (p1 >= 0 && p2 >= 0)
+            {
+                nums1[p--] = nums1[p1] > nums2[p2] ? nums1[p1--] : nums2[p2--];
+            }
+
+            Array.Copy(nums2, 0, nums1, 0, p2 + 1);
         }
     }
 
@@ -30,9 +38,10 @@ namespace Seattle.Easy.BestTimeToBuyAndSellStock
         public void Merge()
         {
             var algorithm = new MergeSortedArray();
-            var result = algorithm.Merge(new int[] { 1, 2, 3, 0, 0, 0 }, new int[] { 2, 5, 6 });
+            var nums1 = new int[] { 1, 2, 3, 0, 0, 0 };
+            algorithm.Merge(nums1, 3, new int[] { 2, 5, 6 }, 3);
 
-            Assert.Equal(result, new int[] { 1, 2, 2, 3, 5, 6 });
+            Assert.Equal(nums1, new int[] { 1, 2, 2, 3, 5, 6 });
         }
     }
 }
