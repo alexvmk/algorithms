@@ -9,5 +9,6 @@ namespace Seattle.DataStructure
         public int val;
         public ListNode next;
         public ListNode(int x) { val = x; }
+        public ListNode(int x, ListNode pnext) { val = x; next = pnext; }
     }
 }
