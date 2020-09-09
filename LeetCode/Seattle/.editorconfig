@@ -246,3 +246,6 @@ dotnet_diagnostic.SA1307.severity = none
 
 # SA1401: Fields should be private
 dotnet_diagnostic.SA1401.severity = none
+
+# Default severity for analyzer diagnostics with category 'StyleCop.CSharp.LayoutRules'
+dotnet_analyzer_diagnostic.category-StyleCop.CSharp.LayoutRules.severity = none
