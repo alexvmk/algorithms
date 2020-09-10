@@ -39,7 +39,7 @@ namespace Seattle.Medium
                 if (s2.Count != 0) sum += s2.Pop();
 
                 list.val = sum % 10;
-                var head = new ListNode(0);
+                var head = new ListNode(sum / 10);
                 head.next = list;
                 list = head;
 
@@ -82,6 +82,20 @@ namespace Seattle.Medium
             Assert.Equal(8, res.next.val);
             Assert.Equal(0, res.next.next.val);
             Assert.Equal(7, res.next.next.next.val);
+
+            var node019 = new ListNode(9);
+            var node018 = new ListNode(9, node019);
+            var node017 = new ListNode(9, node018);
+            var node016 = new ListNode(9, node017);
+            var node015 = new ListNode(9, node016);
+            var node014 = new ListNode(9, node015);
+            var node013 = new ListNode(9, node014);
+            var node012 = new ListNode(9, node013);
+            var node011 = new ListNode(9, node012);
+
+            var node021 = new ListNode(1);
+
+            res = algorithm.AddTwoNumbersAlg(node011, node021);
         }
     }
 }
