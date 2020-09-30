@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
-using Castle.Core.Internal;
 
 namespace Seattle.Easy.QueueAndStack
 {
@@ -23,7 +23,7 @@ namespace Seattle.Easy.QueueAndStack
         /** Push element x to the back of queue. */
         public void Push(int x)
         {
-            if (s1.IsNullOrEmpty())
+            if (s1.Count() == 0)
             {
                 front = x;
             }
@@ -34,9 +34,9 @@ namespace Seattle.Easy.QueueAndStack
         /** Removes the element from in front of queue and returns that element. */
         public int Pop()
         {
-            if (s2.IsNullOrEmpty())
+            if (s2.Count() == 0)
             {
-                while (!s1.IsNullOrEmpty())
+                while (s1.Count() != 0)
                 {
                     s2.Push(s1.Pop());
                 }
@@ -48,13 +48,18 @@ namespace Seattle.Easy.QueueAndStack
         /** Get the front element. */
         public int Peek()
         {
+            if (s2.Count != 0)
+            {
+                return s2.Peek();
+            }
+
             return front;
         }
 
         /** Returns whether the queue is empty. */
         public bool Empty()
         {
-            return s1.IsNullOrEmpty() && s2.IsNullOrEmpty();
+            return s1.Count() == 0 && s2.Count() == 0;
         }
     }
 }

@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using Castle.Core.Internal;
 
 namespace Seattle.Easy.QueueAndStack
 {
@@ -47,7 +44,7 @@ namespace Seattle.Easy.QueueAndStack
         /** Returns whether the stack is empty. */
         public bool Empty()
         {
-            return q1.IsNullOrEmpty();
+            return q1.Count() == 0;
         }
     }
 }

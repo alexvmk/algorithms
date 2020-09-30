@@ -23,8 +23,8 @@ namespace Seattle.Easy.QueueAndStack
 
             queue.Push(1);
             queue.Push(2);
-            Assert.Equal(1, queue.Peek());  // returns 1
             Assert.Equal(1, queue.Pop());  // returns 1
+            Assert.Equal(2, queue.Peek());  // returns 2
             Assert.False(queue.Empty());  // returns false
         }
     }
