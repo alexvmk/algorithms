@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Numerics;
 using System.Text;
 using Xunit;
@@ -10,6 +11,35 @@ namespace Seattle.Easy
     /// </summary>
     public class AddBinary
     {
+        /// <summary>
+        /// Approach 1: Bit-by-Bit Computation.
+        /// </summary>
+        public string AddBinary1(string a, string b)
+        {
+            int n = a.Length, m = b.Length;
+            if (n < m) return AddBinary1(b, a);
+            int L = Math.Max(n, m);
+
+            var sb = new StringBuilder();
+            int carry = 0, j = m - 1;
+            for (int i = L - 1; i > -1; --i)
+            {
+                if (a[i] == '1') ++carry;
+                if (j > -1 && b[j--] == '1') ++carry;
+
+                if (carry % 2 == 1) sb.Append('1');
+                else sb.Append('0');
+
+                carry /= 2;
+            }
+            if (carry == 1) sb.Append('1');
+
+            return new string(sb.ToString().Reverse<char>().ToArray());
+        }
+
+        /// <summary>
+        /// Approach 2: Bit Manipulation.
+        /// </summary>
         public string Run(string a, string b)
         {
             BigInteger x = BinToBigInteger(a);
@@ -30,7 +60,7 @@ namespace Seattle.Easy
         }
 
         /// <summary>
-        /// https://stackoverflow.com/questions/8774083/c-sharp-convert-large-binary-string-to-decimal-system
+        /// https://stackoverflow.com/questions/8774083/c-sharp-convert-large-binary-string-to-decimal-system.
         /// </summary>
         private BigInteger BinToBigInteger(string value)
         {
@@ -50,8 +80,6 @@ namespace Seattle.Easy
         /// <summary>
         /// TODO need to work on it.
         /// </summary>
-        /// <param name="bigint"></param>
-        /// <returns></returns>
         private string ToBinaryString(BigInteger bigint)
         {
             var bytes = bigint.ToByteArray();
@@ -64,6 +92,7 @@ namespace Seattle.Easy
             var binary = Convert.ToString(bytes[idx], 2);
 
             // Ensure leading zero exists if value is positive.
+            // TODO ???
             //if (binary[0] != '0' && bigint.Sign == 1)
             //{
             //    base2.Append('0');
@@ -93,11 +122,21 @@ namespace Seattle.Easy
         public void Test()
         {
             var algorithm = new AddBinary();
-            var r1 = algorithm.Run("11", "1");
+
+            // Approach 1: Bit-by-Bit Computation
+            var r1 = algorithm.AddBinary1("11", "1");
+            Assert.Equal("100", r1);
+
+            r1 = algorithm.AddBinary1("1010", "1011");
+            Assert.Equal("10101", r1);
+
+            // Approach 2: Bit Manipulation
+            r1 = algorithm.Run("11", "1");
             Assert.Equal("100", r1);
 
             r1 = algorithm.Run("1010", "1011");
             Assert.Equal("10101", r1);
+
 
             // TODO this does not work because of incorrect method ToBinaryString
             //r1 = algorithm.Run("11", "11010010");
