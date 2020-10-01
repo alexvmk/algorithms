@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
+using System.Numerics;
 using System.Text;
 using Seattle.DataStructure;
 using Xunit;
@@ -13,7 +15,21 @@ namespace Seattle.Easy
     {
         public string Run(string a, string b)
         {
-            return string.Empty;
+            long x = Convert.ToInt64(a, 2);
+            long y = Convert.ToInt64(b, 2);
+
+            long zero = 0;
+            long answer, carry;
+
+            while (y.CompareTo(zero) != 0)
+            {
+                answer = x ^ y;
+                carry = (x & y) << 1;
+                x = answer;
+                y = carry;
+            }
+
+            return Convert.ToString(x, 2);
         }
     }
 
