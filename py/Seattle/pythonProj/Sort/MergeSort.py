@@ -1,21 +1,41 @@
 from typing import List
 
 
-class Solution:
-    def Sort(nums: List[int]) -> List[int]:
-        return [0,1,2]
+def sort(nums: List[int]) -> List[int]:
+    # if length 1 the return
+    if len(nums) == 1:
+        return nums
 
-    def Merge(list1: List[int], list2: List[int]) -> List[int]:
-        return [0,1,2]
+    # split array into two subareas
+    mid = len(nums) // 2
+    left = nums[:mid]
+    right = nums[mid:]
+
+    # Recursively break the arrays - O(log n)
+    a = sort(left)
+    b = sort(right)
+
+    # sort O(n)
+    return merge(left, right)
+
+def merge(a: List[int], b: List[int]) -> List[int]:
+    out = []
+    while a and b:
+        if a[0] > b[0]:
+            out.append(b.pop(0))
+        else:
+            out.append(a.pop(0))
+    if a:
+        out += a
+    else:
+        out += b
+    return out
 
 
-# Press the green button in the gutter to run the script.
 if __name__ == '__main__':
     print('PyCharm')
+    inputList = [12, 11, 13, 5, 6, 7]
 
-    nums = [12, 11, 13, 5, 6, 7 ]
-    sln = Solution
-
-    print(sln.Sort(nums))
+    print(sort(inputList))
 
     print('Finished')
