@@ -1,6 +1,7 @@
 from typing import List
 
 class Solution:
+    # https://leetcode.com/problems/permutations/solution/
     def permutate(self, nums: List[int]) -> List[List[int]]:
         def backtrack(self, first):
             # if all integers are used up
