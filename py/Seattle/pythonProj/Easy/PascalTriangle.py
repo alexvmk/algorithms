@@ -1,4 +1,5 @@
 class Solution:
+    # https://leetcode.com/problems/pascals-triangle
     def calc_triangle(self, n: int) -> [[int]]:
         result = [[1]]
         if n <= 1:
